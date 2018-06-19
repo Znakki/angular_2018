@@ -1,0 +1,11 @@
+<section>
+  <search></search>
+  <div>
+    <button>ADD A COURSE</button>
+  </div>
+  <ng-container *ngFor="let videoCourse of videoCourses">
+    <video-course [videoCourse]="videoCourse"></video-course>
+  </ng-container>
+</section>
+
+

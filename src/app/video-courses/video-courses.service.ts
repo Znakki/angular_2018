@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {VideoCourseModel} from '../interfaces/video-course';
+import {VideoCourse} from '../interfaces/video-course';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoCoursesService {
 
-  public videoCoursesItems: VideoCourseModel [] = [
+  public videoCoursesItems: VideoCourse [] = [
     {
       id: '3he3hj3hj3hj34j3h4j34h',
       title: 'ANGULAR 6',
@@ -47,7 +47,7 @@ export class VideoCoursesService {
   constructor() {
   }
 
-  public getVideoCoursesList(): VideoCourseModel[] {
+  public getVideoCoursesList(): VideoCourse[] {
     return this.videoCoursesItems;
   }
 }

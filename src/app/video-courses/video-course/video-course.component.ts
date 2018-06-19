@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {VideoCourseModel} from '../../interfaces/video-course';
+import {VideoCourse} from '../../interfaces/video-course';
 
 @Component({
   selector: 'video-course',
@@ -8,7 +8,7 @@ import {VideoCourseModel} from '../../interfaces/video-course';
 })
 export class VideoCourseComponent implements OnInit {
 
-  @Input() videoCourse: VideoCourseModel;
+  @Input() videoCourse: VideoCourse;
 
   constructor() { }
 

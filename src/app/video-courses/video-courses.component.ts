@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {VideoCoursesService} from './video-courses.service';
-import {VideoCourseModel} from '../interfaces/video-course';
+import {VideoCourse} from '../interfaces/video-course';
 
 @Component({
   selector: 'video-courses',
@@ -9,7 +9,7 @@ import {VideoCourseModel} from '../interfaces/video-course';
 })
 export class VideoCoursesComponent implements OnInit {
 
-  public videoCourses: VideoCourseModel[];
+  public videoCourses: VideoCourse[];
 
   constructor(private videoCoursesService: VideoCoursesService) {
   }

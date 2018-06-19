@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserModel} from '../interfaces/user';
+import {User} from '../interfaces/user';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import {UserModel} from '../interfaces/user';
 })
 export class HeaderComponent implements OnInit {
 
-  public hardcodedUser: UserModel = {
+  public hardcodedUser: User = {
     id: 154554,
     firstName: 'Max',
     lastName: 'Fruzorov'

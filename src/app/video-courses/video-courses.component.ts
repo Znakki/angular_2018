@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {VideoCoursesService} from './video-courses.service';
-import {VideoCourse} from '../interfaces/video-course';
+import {VideoCourse} from 'videoCourse';
 
 @Component({
   selector: 'video-courses',

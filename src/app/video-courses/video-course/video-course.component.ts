@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {VideoCourse} from '../../interfaces/video-course';
+import {VideoCourse} from 'videoCourse';
 
 @Component({
   selector: 'video-course',

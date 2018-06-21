@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {VideoCourse} from '../interfaces/video-course';
+import {VideoCourse} from 'videoCourse';
 
 @Injectable({
   providedIn: 'root'

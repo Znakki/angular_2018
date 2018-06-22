@@ -1,8 +1,26 @@
-section {
+.video {
   display:flex;
-  align-items: center;
-  justify-content: space-around;
-  border: 4px solid coral;
-  background: #ffffff;
+  background: white;
+  border: 1px solid lightgray;
   margin-bottom: 5px;
+
+  &__content {
+    flex-grow: 1;
+    margin-right: 20px;
+    overflow: hidden;
+  }
+
+  &__buttons {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    margin-right: auto;
+  }
 }

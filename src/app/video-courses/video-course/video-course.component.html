@@ -1,14 +1,14 @@
-<section>
-   <div>
-     <p>{{videoCourse.id}}</p>
-     <p>{{videoCourse.title}}</p>
-     <p>{{videoCourse.duration}}</p>
-     <p>{{videoCourse.creation}}</p>
-     <p>{{videoCourse.description}}</p>
-   </div>
-
-  <div>
-    <button>EDIT</button>
-    <button>DELETE</button>
-  </div>
-</section>
+<mat-card class="video">
+<div class="video__content">
+<div class="video__content__header">
+<h1 class="video__content--title">{{videoCourse.title}}</h1>
+<div class="video__content--fixed">{{videoCourse.duration}}</div>
+<div class="video__content--fixed">{{videoCourse.creation}}</div>
+</div>
+<p class="video__content">{{videoCourse.description}}</p>
+</div>
+<div class="buttons">
+<button mat-raised-button>EDIT</button>
+<button mat-raised-button>DELETE</button>
+</div>
+</mat-card>

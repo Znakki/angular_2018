@@ -1,7 +1,9 @@
-<section>
+<mat-toolbar class="header" color="primary">
   <logo></logo>
   <div>Hello {{hardcodedUser.firstName}} {{hardcodedUser.lastName}}</div>
-  <breadcrumps></breadcrumps>
-  <button>User LogIN</button>
-  <button>User LogOUT</button>
-</section>
+  <div class="buttons">
+    <button mat-raised-button >LogIn</button>
+    <button mat-raised-button >LogOut</button>
+  </div>
+</mat-toolbar>
+<breadcrumps></breadcrumps>

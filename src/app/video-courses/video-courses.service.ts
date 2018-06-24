@@ -50,4 +50,10 @@ export class VideoCoursesService {
   public getVideoCoursesList(): VideoCourse[] {
     return this.videoCoursesItems;
   }
+
+  public getCourseItemById(id: string): VideoCourse {
+    return this.videoCoursesItems
+      .filter(courseItem => courseItem.id === id)
+      .pop();
+  }
 }

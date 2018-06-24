@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {VideoCourse} from '../../interfaces/video-course';
 
 @Component({
@@ -9,10 +9,16 @@ import {VideoCourse} from '../../interfaces/video-course';
 export class VideoCourseComponent implements OnInit {
 
   @Input() videoCourse: VideoCourse;
+  @Output() courseItemID: EventEmitter <string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClickButton() {
+    console.log('******');
+    this.courseItemID.emit(this.videoCourse.id);
   }
 
 }

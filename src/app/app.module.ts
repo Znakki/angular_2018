@@ -9,6 +9,7 @@ import { VideoCourseComponent } from './video-courses/video-course/video-course.
 import { LogoComponent } from './logo/logo.component';
 import { SearchComponent } from './video-courses/search/search.component';
 import { BreadcrumpsComponent } from './breadcrumps/breadcrumps.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BreadcrumpsComponent } from './breadcrumps/breadcrumps.component';
     BreadcrumpsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

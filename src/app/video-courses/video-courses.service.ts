@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {VideoCourse} from '../interfaces/video-course';
+import {Id} from '../interfaces/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,7 @@ export class VideoCoursesService {
     return this.videoCoursesItems;
   }
 
-  public getCourseItemById(id: string): VideoCourse {
+  public getCourseItemById(id: Id): VideoCourse {
     return this.videoCoursesItems
       .filter(courseItem => courseItem.id === id)
       .pop();

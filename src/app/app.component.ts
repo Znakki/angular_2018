@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Id} from './interfaces/shared';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+
+  videoCourseWasSelected(id: Id): void {
+    console.log('VideoCourse was deleted: ', id);
+  }
 }

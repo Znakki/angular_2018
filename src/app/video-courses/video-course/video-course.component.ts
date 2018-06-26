@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {VideoCourse} from '../../interfaces/video-course';
+import {VideoCourseModel} from './video-course.model';
 
 @Component({
   selector: 'video-course',
@@ -8,17 +8,17 @@ import {VideoCourse} from '../../interfaces/video-course';
 })
 export class VideoCourseComponent implements OnInit {
 
-  @Input() videoCourse: VideoCourse;
-  @Output() courseItemID: EventEmitter <string> = new EventEmitter<string>();
+  @Input() videoCourse: VideoCourseModel;
+  @Output() deleteVideoCourseEvent = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.videoCourse = new VideoCourseModel(this.videoCourse);
   }
 
-  onClickButton() {
-    console.log('******');
-    this.courseItemID.emit(this.videoCourse.id);
+  public deleteVideoCourse(id: string): void {
+    this.deleteVideoCourseEvent.emit(id);
   }
-
 }

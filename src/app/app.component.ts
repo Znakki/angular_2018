@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Id} from './interfaces/shared';
+import {Id} from './interfaces/shared.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,4 @@ import {Id} from './interfaces/shared';
 })
 export class AppComponent {
 
-  videoCourseWasSelected(id: Id): void {
-    console.log('VideoCourse was deleted: ', id);
-  }
 }

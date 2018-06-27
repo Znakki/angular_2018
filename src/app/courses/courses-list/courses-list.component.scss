@@ -1,0 +1,24 @@
+section {
+  border: 4px solid royalblue;
+  background: #03dac6;
+}
+.course-list {
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid lightgray;
+  }
+
+  &__item {
+    flex-grow: 1;
+  }
+  &__buttons {
+  }
+}
+
+.load_more {
+  border: 10px solid #f73dff;
+  text-align: center;
+  font-weight: 800;
+}

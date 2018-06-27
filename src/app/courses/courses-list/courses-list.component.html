@@ -1,0 +1,13 @@
+<section class="course-list">
+  <search></search>
+  <div class="course-list__item-wrapper" *ngFor="let course of courses">
+    <course class="course-list__item" [course]="course"></course>
+    <div class="course-list__buttons">
+      <button>EDIT</button>
+      <button (click)="deleteCourseItem(course)">DELETE</button>
+    </div>
+  </div>
+  <div class="load_more" (click)="loadMoreCourseItems()">LOAD MORE</div>
+</section>
+
+

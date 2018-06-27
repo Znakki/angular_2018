@@ -1,7 +1,7 @@
-import {VideoCourse} from '../../interfaces/video-course';
+import {Course} from '../../interfaces/course.inteface';
 
 
-export class VideoCourseModel implements VideoCourse {
+export class CourseModel implements Course {
   id: string;
   title: string;
   description: string;
@@ -9,7 +9,7 @@ export class VideoCourseModel implements VideoCourse {
   creation: string;
 
 
-  constructor(videoCourse: VideoCourse) {
+  constructor(videoCourse: Course) {
     this.id = videoCourse.id;
     this.title = videoCourse.title;
     this.description = videoCourse.description;

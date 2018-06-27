@@ -1,9 +1,0 @@
-<section>
-  <search></search>
-  <ng-container *ngFor="let videoCourse of videoCourses">
-    <video-course [videoCourse]="videoCourse" (deleteVideoCourseEvent)="deleteCourseItem($event)"></video-course>
-  </ng-container>
-  <div class="load_more" (click)="loadMoreCourseItems()">LOAD MORE</div>
-</section>
-
-

@@ -1,4 +1,4 @@
-export interface VideoCourse {
+export interface Course {
   id: string;
   title: string;
   creation: string;

@@ -1,19 +1,19 @@
 import {Injectable} from '@angular/core';
-import {VideoCourse} from '../interfaces/video-course';
-import {Id} from '../interfaces/shared';
+import {Course} from "../interfaces/course.inteface";
+import {Id} from "../interfaces/shared.interface";
 
 @Injectable({
   providedIn: 'root'
 })
-export class VideoCoursesService {
+export class CoursesService {
 
-  public videoCoursesItems: VideoCourse [] = [
+  public coursesItems: Course [] = [
     {
       id: '3he3hj3hj3hj34j3h4j34h',
       title: 'ANGULAR 6',
       creation: '15/02/1990',
       duration: 60,
-      description: 'FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFF '
+      description: 'FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFF'
     },
     {
       id: '1a',
@@ -48,12 +48,12 @@ export class VideoCoursesService {
   constructor() {
   }
 
-  public getVideoCoursesList(): VideoCourse[] {
-    return this.videoCoursesItems;
+  public getVideoCoursesList(): Course[] {
+    return this.coursesItems;
   }
 
-  public getCourseItemById(id: Id): VideoCourse {
-    return this.videoCoursesItems
+  public getCourseItemById(id: Id): Course {
+    return this.coursesItems
       .filter(courseItem => courseItem.id === id)
       .pop();
   }

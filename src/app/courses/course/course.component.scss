@@ -1,19 +1,10 @@
-.video {
-  display:flex;
+.course {
   align-items: center;
-  background: white;
-  border: 1px solid lightgray;
-  margin-bottom: 5px;
 
   &__content {
     flex-grow: 1;
     margin-right: 20px;
     overflow: hidden;
-  }
-
-  &__buttons {
-    width: 200px;
-    flex-shrink: 0;
   }
 
   &__header {

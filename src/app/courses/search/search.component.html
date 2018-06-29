@@ -1,0 +1,12 @@
+<section class="search">
+  <div>
+    <input type="text" [(ngModel)]="videoCourseName" #courseInput>
+    <button (click)="logCourseValue(courseInput.value)">SEARCH</button>
+    <div *ngIf="videoCourseName">
+      <h1>Finding... the {{videoCourseName}}</h1>
+    </div>
+  </div>
+  <div>
+    <button>ADD A COURSE</button>
+  </div>
+</section>

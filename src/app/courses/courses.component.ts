@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CoursesService} from "./courses.service";
-import {Course} from "../interfaces/course.inteface";
-import {Id} from "../interfaces/shared.interface";
+import {CoursesService} from './courses.service';
+import {Course} from '../interfaces/course.inteface';
+import {Id} from '../interfaces/shared.interface';
 
 @Component({
   selector: 'courses',
@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit() {
-    this.courseData = this.coursesService.getVideoCoursesList()
+    this.courseData = this.coursesService.getVideoCoursesList();
   }
 
   courseWasSelected(id: Id): void {

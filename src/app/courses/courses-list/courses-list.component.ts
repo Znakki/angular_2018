@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Id} from "../../interfaces/shared.interface";
-import {Course} from "../../interfaces/course.inteface";
-import {CoursesService} from "../courses.service";
+import {Id} from '../../interfaces/shared.interface';
+import {Course} from '../../interfaces/course.inteface';
+import {CoursesService} from '../courses.service';
 
 @Component({
   selector: 'courses-list',
@@ -11,7 +11,7 @@ import {CoursesService} from "../courses.service";
 export class CoursesListComponent implements OnInit {
 
   public courses: Course[];
-  @Input() coursesList : Course[];
+  @Input() coursesList: Course[];
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
 
   constructor(private coursesService: CoursesService) {

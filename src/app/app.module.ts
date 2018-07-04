@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { BreadcrumpsComponent } from './breadcrumps/breadcrumps.component';
-import {CoursesModule} from "./courses/courses.module";
+import {CoursesModule} from './courses/courses.module';
 
 @NgModule({
   declarations: [

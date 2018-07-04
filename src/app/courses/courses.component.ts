@@ -18,7 +18,7 @@ export class CoursesComponent implements OnInit {
     this.courseData = this.coursesService.getVideoCoursesList();
   }
 
-  courseWasSelected(id: Id): void {
+  public courseWasSelected(id: Id): void {
     console.log('Course was deleted: ', id);
   }
 

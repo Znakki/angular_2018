@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoursesListComponent} from './courses-list.component';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
   let fixture: ComponentFixture<CoursesListComponent>;
 
   beforeEach(async(() => {
-    const coursesItems = {coursesItems: jasmine.createSpy('coursesItems')};
     TestBed.configureTestingModule({
       declarations: [ CoursesListComponent ],
       schemas: [NO_ERRORS_SCHEMA]

@@ -37,7 +37,7 @@ export class CoursesListComponent implements OnInit {
   public loadMoreCourseItems(): void {
     console.log('LOAD WORKS IS WORKED');
     // TODO observable should be used for this action
-    this.courses =  this.courses.concat(this.courses);
+    this.courses = this.courses.concat(this.courses);
   }
 
 }

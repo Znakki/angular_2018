@@ -1,23 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoursesListComponent} from './courses-list.component';
+import { HeaderComponent} from './header.component';
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 
-describe('CoursesListComponent', () => {
-  let component: CoursesListComponent;
-  let fixture: ComponentFixture<CoursesListComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
-    const coursesItems = {coursesItems: jasmine.createSpy('coursesItems')};
     TestBed.configureTestingModule({
-      declarations: [ CoursesListComponent ],
+      declarations: [ HeaderComponent ],
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CoursesListComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Id} from './interfaces/shared.interface';
 
 @Component({
   selector: 'app-root',

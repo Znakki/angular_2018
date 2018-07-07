@@ -9,7 +9,10 @@ import {CoursesComponent} from './courses.component';
 
 
 // services
-import {CoursesService} from "./courses.service";
+import {CoursesService} from './courses.service';
+
+// directives
+import {HighlightBorderDirective} from './highlight-border.directive';
 
 
 @NgModule({
@@ -19,6 +22,7 @@ import {CoursesService} from "./courses.service";
   ],
   declarations: [
     CoursesListComponent,
+    HighlightBorderDirective,
     CourseComponent,
     SearchComponent,
     CoursesComponent

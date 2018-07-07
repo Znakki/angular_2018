@@ -9,39 +9,44 @@ export class CoursesService {
 
   public coursesItems: Course [] = [
     {
-      id: '1234',
-      title: 'A Practical Guide to Algorithms with JavaScript',
+      id: '3he3hj3hj3hj34j3h4j34h',
+      title: 'Angular 6',
       creation: '2018-05-13',
-      duration: 45,
-      description: 'Learn to solve algorithms and analyze them efficiently in both an interview setting and also in your day-to-day development.',
+      duration: 60,
+      description: 'FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFF',
+      topRated: true
     },
     {
-      id: '23456',
-      title: 'Webpack 4 Fundamentals',
+      id: '1a',
+      title: 'Angular 4',
       creation: '2019-05-20',
-      duration: 247,
-      description: 'Learn the Webpack 4 plugin system, tour the Webpack source code and learn to build custom plugins and custom Webpack loaders.',
+      duration: 60,
+      description: 'klfjgklfsdjgkldjfgklsjkljskgsj',
+      topRated: false
     },
     {
-      id: '234765',
-      title: 'Complete Intro to Web Development, v2',
+      id: '2b',
+      title: 'Angular 1.5 + Rails',
       creation: '2018-09-15',
-      duration: 67,
-      description: 'More than an introduction, in this course you’ll go from building your first website to having the foundation for becoming a professional web developer!',
+      duration: 60,
+      description: 'flkjgfljgfsjgsfdjgksfjgklsfdjg',
+      topRated: true
     },
     {
-      id: '644736343',
-      title: 'Testing React Applications',
+      id: '3c',
+      title: 'Python',
       creation: '2018-06-31',
-      duration: 98,
-      description: 'Fix errors before your app reaches the end user by writing maintainable unit test & integration tests for your React applications!',
+      duration: 60,
+      description: 'sgjkdjgfsdkjgklsfdjgkjdfgklfdjgfd',
+      topRated: false
     },
     {
-      id: '3435433',
-      title: 'SQL Fundamentals',
+      id: '4d',
+      title: 'React',
       creation: '2017-04-20',
-      duration: 23,
-      description: 'Learn SQL, the most popular language for storing, querying and analyzing the relational data that powers your server-side applications.',
+      duration: 60,
+      description: 'fgfdglkfjgklfdjgklafjgkfag',
+      topRated: false
     }
   ];
 

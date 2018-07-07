@@ -7,6 +7,10 @@
     overflow: hidden;
   }
 
+  &__star--rated {
+    color: gold;
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -14,5 +18,9 @@
 
   &__title {
     margin-right: auto;
+  }
+  &--createdDate {
+    font-weight: bold;
+    margin-left: 30px;
   }
 }

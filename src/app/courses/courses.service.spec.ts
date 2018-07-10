@@ -25,7 +25,8 @@ describe('CoursesService', () => {
       title: 'ANGULAR 6',
       creation: '15/02/1990',
       duration: 60,
-      description: 'FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFF'
+      description: 'FFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFF',
+      topRated: true
     };
     expect(coursesService.getCourseItemById(mockedId)).toEqual(mockedObject);
   });

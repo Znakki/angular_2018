@@ -14,6 +14,7 @@ export class CoursesService {
       creation: '2018-05-13',
       duration: 45,
       description: 'Learn to solve algorithms and analyze them efficiently in both an interview setting and also in your day-to-day development.',
+      topRated: true
     },
     {
       id: '23456',
@@ -21,6 +22,7 @@ export class CoursesService {
       creation: '2019-05-20',
       duration: 247,
       description: 'Learn the Webpack 4 plugin system, tour the Webpack source code and learn to build custom plugins and custom Webpack loaders.',
+      topRated: false
     },
     {
       id: '234765',
@@ -28,6 +30,7 @@ export class CoursesService {
       creation: '2018-09-15',
       duration: 67,
       description: 'More than an introduction, in this course you’ll go from building your first website to having the foundation for becoming a professional web developer!',
+      topRated: true
     },
     {
       id: '644736343',
@@ -35,6 +38,7 @@ export class CoursesService {
       creation: '2018-06-31',
       duration: 98,
       description: 'Fix errors before your app reaches the end user by writing maintainable unit test & integration tests for your React applications!',
+      topRated: false
     },
     {
       id: '3435433',
@@ -42,6 +46,7 @@ export class CoursesService {
       creation: '2017-04-20',
       duration: 23,
       description: 'Learn SQL, the most popular language for storing, querying and analyzing the relational data that powers your server-side applications.',
+      topRated: false
     }
   ];
 

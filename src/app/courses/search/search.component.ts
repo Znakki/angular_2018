@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'search',
@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
  public videoCourseName: string;
+ @Output() videoCourseNameEmitEvent = new EventEmitter<string>();
 
   constructor() {
   }
@@ -14,7 +15,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  public logCourseValue (value: string): void {
-    console.log(value);
+  public findCourseInput(value: string): void {
+    this.videoCourseNameEmitEvent.emit(value);
   }
 }

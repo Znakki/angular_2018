@@ -7,6 +7,7 @@ export class CourseModel implements Course {
   description: string;
   duration: number;
   creation: string;
+  topRated: boolean;
 
 
   constructor(videoCourse: Course) {
@@ -15,6 +16,7 @@ export class CourseModel implements Course {
     this.description = videoCourse.description;
     this.duration = videoCourse.duration;
     this.creation = videoCourse.creation;
+    this.topRated = videoCourse.topRated;
   }
 
 }

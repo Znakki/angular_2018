@@ -1,10 +1,10 @@
 <section class="course-list">
-  <search></search>
+  <search (videoCourseNameEmitEvent)="getSearchInput($event)"></search>
   <div class="course-list__notification" *ngIf="!courses.length">
     NO DATA. FEEL FREE TO ADD A NEW COURSE
   </div>
-  <div class="course-list__item-wrapper" *ngFor="let course of courses">
-    <course [appHighlightBorder] = "course.creation" class="course-list__item" [course]="course"></course>
+  <div class="course-list__item-wrapper" *ngFor="let course of courses | orderByDate">
+    <course [appHighlightBorder]="course.creation" class="course-list__item" [course]="course"></course>
     <div class="course-list__buttons">
       <button>EDIT</button>
       <button (click)="deleteCourseItem(course)">DELETE</button>

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
 import {CoursesService} from '../courses.service';
+import {FilterPipe} from "../filter.pipe";
 
 @Component({
   selector: 'courses-list',
@@ -14,7 +15,7 @@ export class CoursesListComponent implements OnInit {
   @Input() coursesList: Course[];
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe) {
 
   }
 
@@ -38,6 +39,10 @@ export class CoursesListComponent implements OnInit {
     console.log('LOAD WORKS IS WORKED');
     // TODO observable should be used for this action
     this.courses = this.courses.concat(this.courses);
+  }
+
+  public getSearchInput(courseInputValue: string) {
+    this.courses = this._filterPipe.transform(this.coursesList, courseInputValue);
   }
 
 }

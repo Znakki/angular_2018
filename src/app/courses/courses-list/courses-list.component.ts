@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
 import {CoursesService} from '../courses.service';
-import {FilterPipe} from "../filter.pipe";
+import {FilterPipe} from '../filter.pipe';
 
 @Component({
   selector: 'courses-list',
@@ -24,10 +24,13 @@ export class CoursesListComponent implements OnInit {
   }
 
   public deleteCourseItem(course: Course) {
-    const courseItem: Course = this.coursesService.getCourseItemById(course.id);
-    this.deleteCourseById(courseItem.id);
-    this.deletedVideoCourseEvent.emit(courseItem.id);
-    console.log('course id ', courseItem.id);
+    const isRemoveCourse = confirm('Do you wanna remove this course? PLease confirm it');
+    if (isRemoveCourse) {
+      const courseItem: Course = this.coursesService.getCourseItemById(course.id);
+      this.deleteCourseById(courseItem.id);
+      this.deletedVideoCourseEvent.emit(courseItem.id);
+      console.log('course id ', courseItem.id);
+    }
   }
 
   private deleteCourseById(id: Id): void {

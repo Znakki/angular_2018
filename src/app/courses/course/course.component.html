@@ -1,10 +1,10 @@
-<section class="course">
+<mat-card class="course">
   <div class="course__header">
-    <h2 class="course__title">{{course.title|uppercase}} |
+    <mat-card-title class="course__title">{{course.title|uppercase}} |
       <i [ngClass]="{'course__star--rated': course.topRated}" class="fa fa-star"></i>
-    </h2>
-    <div>{{course.duration | duration}}</div>
-    <div class="course--createdDate">{{course.creation| date:'MM.dd.yyyy'}}</div>
+    </mat-card-title>
+    <mat-card-subtitle>{{course.duration | duration}}</mat-card-subtitle>
+    <mat-card-subtitle class="course--createdDate">{{course.creation| date:'MM.dd.yyyy'}}</mat-card-subtitle>
   </div>
-  <p>{{course.description}}</p>
-</section>
+  <mat-card-content>{{course.description}}</mat-card-content>
+</mat-card>

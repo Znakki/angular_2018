@@ -1,12 +1,14 @@
 <section class="search">
   <div>
-    <input type="text" [(ngModel)]="videoCourseName" #courseInput>
-    <button (click)="findCourseInput(courseInput.value)">SEARCH</button>
+    <mat-form-field class="search__searchBar">
+      <input matInput type="text" [(ngModel)]="videoCourseName" #courseInput>
+    </mat-form-field>
+    <button mat-raised-button (click)="findCourseInput(courseInput.value)">SEARCH</button>
     <div *ngIf="videoCourseName">
       <h1>Finding... the {{videoCourseName}}</h1>
     </div>
   </div>
-  <div>
-    <button>ADD A COURSE</button>
+  <div class="search__addCourse">
+    <button mat-raised-button >ADD A COURSE</button>
   </div>
 </section>

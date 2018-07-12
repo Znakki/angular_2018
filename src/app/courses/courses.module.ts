@@ -18,12 +18,14 @@ import {HighlightBorderDirective} from './highlight-border.directive';
 import {DurationPipe} from "../duration.pipe";
 import { OrderByDatePipe } from './order-by-date.pipe';
 import { FilterPipe } from './filter.pipe';
+import {MaterialModule} from "../material/material.module";
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    MaterialModule
   ],
   declarations: [
     CoursesListComponent,
@@ -40,7 +42,8 @@ import { FilterPipe } from './filter.pipe';
     FilterPipe
   ],
   exports: [
-    CoursesComponent
+    CoursesComponent,
+    MaterialModule
   ]
 })
 export class CoursesModule { }

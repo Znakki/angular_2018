@@ -6,8 +6,8 @@
   <div class="course-list__item-wrapper" *ngFor="let course of courses | orderByDate">
     <course [appHighlightBorder]="course.creation" class="course-list__item" [course]="course"></course>
     <div class="course-list__buttons">
-      <button>EDIT</button>
-      <button (click)="deleteCourseItem(course)">DELETE</button>
+      <button mat-raised-button>EDIT</button>
+      <button mat-raised-button (click)="deleteCourseItem(course)">DELETE</button>
     </div>
   </div>
   <div class="load_more" (click)="loadMoreCourseItems()">LOAD MORE</div>

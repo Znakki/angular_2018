@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { BreadcrumpsComponent } from './breadcrumps/breadcrumps.component';
 import {CoursesModule} from './courses/courses.module';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {CoursesModule} from './courses/courses.module';
   ],
   imports: [
     BrowserModule,
-    CoursesModule
+    BrowserAnimationsModule,
+    CoursesModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

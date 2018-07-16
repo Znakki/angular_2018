@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {AppService} from "../app.service";
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit{
 
   public form: FormGroup = new FormGroup(
     {
@@ -15,10 +16,11 @@ export class LoginComponent implements OnInit {
       userPassword: new FormControl()
     });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private appService: AppService) {
   }
 
-  ngOnInit() {
+  ngOnInit(){
+    // this.appService.isAuthChecked(false);
   }
 
 
@@ -26,6 +28,5 @@ export class LoginComponent implements OnInit {
     this.authService.logIn(this.form.value.userName, this.form.value.userPassword);
     console.log('send data succesfully');
     this.form.reset();
-    this.authService.isAuthenticated()
   }
 }

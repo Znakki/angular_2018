@@ -13,9 +13,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {CoursesComponent} from './courses/courses.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {LoginResolver} from "./login/login.resolver";
 
 const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {
+    path: 'login', component: LoginComponent,
+    resolve: {
+      login: LoginResolver
+    }
+  },
   {
     path: '',
     redirectTo: '/courses',
@@ -41,7 +47,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],
-  providers: [],
+  providers: [LoginResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

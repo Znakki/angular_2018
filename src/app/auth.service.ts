@@ -21,7 +21,7 @@ export class AuthService {
     console.log('logOut method works');
   }
 
-  public isAuthenticated() {
+  public isAuthenticated(): boolean {
     console.log('isAuthenticated method works');
     return true;
   }

@@ -1,0 +1,26 @@
+.login {
+  display: flex;
+  justify-content: center;
+  margin: 150px 0;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sign {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 200px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}

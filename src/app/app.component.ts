@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from "rxjs/internal/Observable";
+import {AppService} from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  constructor(private appService: AppService) {
+  }
+
+  get isAuth(): Observable<boolean> {
+    return this.appService.isAuth$;
+  }
 }

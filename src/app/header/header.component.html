@@ -2,8 +2,7 @@
   <logo></logo>
   <div>Hello {{hardcodedUser.firstName}} {{hardcodedUser.lastName}}</div>
   <div class="header__buttons">
-    <button mat-stroked-button>User LogIN</button>
-    <button mat-stroked-button>User LogOUT</button>
+    <button mat-stroked-button routerLink="login">User LogIN</button>
+    <button mat-stroked-button (click)="logOut()">User LogOUT</button>
   </div>
 </mat-toolbar>
-<breadcrumps></breadcrumps>

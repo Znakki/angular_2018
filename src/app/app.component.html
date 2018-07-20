@@ -1,4 +1,4 @@
 <app-header></app-header>
-<courses></courses>
-<app-footer></app-footer>
-
+<breadcrumps *ngIf="isAuth | async"></breadcrumps>
+<router-outlet></router-outlet>
+<app-footer *ngIf="isAuth | async"></app-footer>

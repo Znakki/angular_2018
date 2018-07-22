@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //components
 import {CoursesListComponent} from './courses-list/courses-list.component';
@@ -14,18 +14,23 @@ import {CoursesService} from './courses.service';
 // directives
 import {HighlightBorderDirective} from './highlight-border.directive';
 
-//pipes
-import {DurationPipe} from "../duration.pipe";
+// pipes
+import {DurationPipe} from '../duration.pipe';
 import { OrderByDatePipe } from './order-by-date.pipe';
 import { FilterPipe } from './filter.pipe';
-import {MaterialModule} from "../material/material.module";
+import {MaterialModule} from '../material/material.module';
+import {RouterModule} from '@angular/router';
+import { CourseModalComponent } from './course-modal/course-modal.component';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   declarations: [
     CoursesListComponent,
@@ -35,7 +40,8 @@ import {MaterialModule} from "../material/material.module";
     CoursesComponent,
     DurationPipe,
     OrderByDatePipe,
-    FilterPipe
+    FilterPipe,
+    CourseModalComponent
   ],
   providers: [
     CoursesService,

@@ -1,0 +1,12 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal > * {
+  align-items: center;
+}
+
+mat-form-field {
+  min-width: 200px;
+}

@@ -13,7 +13,9 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {CoursesComponent} from './courses/courses.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {LoginResolver} from "./login/login.resolver";
+import {LoginResolver} from './login/login.resolver';
+import {CourseModalComponent} from './courses/course-modal/course-modal.component';
+import {MaterialModule} from './material/material.module';
 
 const appRoutes: Routes = [
   {
@@ -27,7 +29,15 @@ const appRoutes: Routes = [
     redirectTo: '/courses',
     pathMatch: 'full'
   },
-  {path: 'courses', component: CoursesComponent},
+  {
+    path: 'courses', component: CoursesComponent,
+    children: [
+      {
+        path: 'modal',
+        component: CourseModalComponent
+      },
+    ]
+  },
 ];
 
 @NgModule({

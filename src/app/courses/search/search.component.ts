@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'search',
@@ -6,10 +7,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
- public videoCourseName: string;
- @Output() videoCourseNameEmitEvent = new EventEmitter<string>();
+  public videoCourseName: string;
+  @Output() videoCourseNameEmitEvent = new EventEmitter<string>();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -17,5 +18,9 @@ export class SearchComponent implements OnInit {
 
   public findCourseInput(value: string): void {
     this.videoCourseNameEmitEvent.emit(value);
+  }
+
+  public openCourseModal() {
+    this.router.navigate(['/courses/modal']);
   }
 }

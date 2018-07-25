@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {AppService} from "../app.service";
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   public form: FormGroup = new FormGroup(
     {
@@ -16,10 +15,10 @@ export class LoginComponent implements OnInit{
       userPassword: new FormControl()
     });
 
-  constructor(private authService: AuthService, private appService: AppService) {
+  constructor(private authService: AuthService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     // this.appService.isAuthChecked(false);
   }
 

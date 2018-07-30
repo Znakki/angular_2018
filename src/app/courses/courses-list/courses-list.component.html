@@ -6,7 +6,7 @@
   <div class="course-list__item-wrapper" *ngFor="let course of courses | orderByDate">
     <course [appHighlightBorder]="course.creation" class="course-list__item" [course]="course"></course>
     <div class="course-list__buttons">
-      <button mat-raised-button>EDIT</button>
+      <button mat-raised-button (click)="editCourseItem(course.id)" [routerLink]="['/courses', course.id]" [queryParams]="course">EDIT</button>
       <button mat-raised-button (click)="deleteCourseItem(course)">DELETE</button>
     </div>
   </div>

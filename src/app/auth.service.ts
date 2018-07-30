@@ -11,7 +11,7 @@ export class AuthService {
   public logIn(userName, userPassword) {
     localStorage.setItem('userName', userName);
     localStorage.setItem('userPassword', userPassword);
-    console.log(userName, userPassword );
+    console.log(userName, userPassword);
 
     console.log('login method works');
   }
@@ -22,11 +22,10 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    console.log('isAuthenticated method works');
-    return true;
+    return !!localStorage.getItem('userName') && localStorage.getItem('userName') !== 'null';
   }
 
-  public getUserInfo () {
+  public getUserInfo() {
     console.log('getUserInfo method works');
 
   }

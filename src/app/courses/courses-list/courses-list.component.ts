@@ -49,4 +49,9 @@ export class CoursesListComponent implements OnInit {
     this.courses = this._filterPipe.transform(this.coursesList, courseInputValue);
   }
 
+  public editCourseItem(courseId: string): void {
+    const courseItem: Course = this.coursesService.getCourseItemById(courseId);
+    console.log(courseItem);
+  }
+
 }

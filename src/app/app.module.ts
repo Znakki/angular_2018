@@ -15,7 +15,9 @@ import {CoursesComponent} from './courses/courses.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {LoginResolver} from './login/login.resolver';
 import {CourseModalComponent} from './courses/course-modal/course-modal.component';
-import {MaterialModule} from './material/material.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {CoursesResolver} from './courses/courses.resolver';
+import {AuthGuard} from './auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -31,12 +33,24 @@ const appRoutes: Routes = [
   },
   {
     path: 'courses', component: CoursesComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    resolve: {
+      courses: CoursesResolver
+    },
     children: [
       {
-        path: 'modal',
+        path: 'new',
+        component: CourseModalComponent
+      },
+      {
+        path: ':id',
         component: CourseModalComponent
       },
     ]
+  }, {
+    path: '**',
+    component: PageNotFoundComponent
   },
 ];
 
@@ -48,6 +62,7 @@ const appRoutes: Routes = [
     LogoComponent,
     BreadcrumpsComponent,
     LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +72,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],
-  providers: [LoginResolver],
+  providers: [LoginResolver,CoursesResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

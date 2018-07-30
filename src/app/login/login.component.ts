@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -15,17 +16,17 @@ export class LoginComponent implements OnInit {
       userPassword: new FormControl()
     });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private  router: Router) {
   }
 
   ngOnInit() {
-    // this.appService.isAuthChecked(false);
   }
 
 
   public sendLoginData() {
     this.authService.logIn(this.form.value.userName, this.form.value.userPassword);
-    console.log('send data succesfully');
     this.form.reset();
+    this.authService.getUserInfo();
+    this.router.navigate(['/courses']);
   }
 }

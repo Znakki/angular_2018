@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Observable} from "rxjs/internal/Observable";
-import {AppService} from "./app.service";
+import {Observable} from 'rxjs/internal/Observable';
+import {AppService} from './app.service';
 
 @Component({
   selector: 'app-root',

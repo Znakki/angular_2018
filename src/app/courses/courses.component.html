@@ -1,3 +1,4 @@
 <section>
-  <courses-list [coursesList]="courseData" (deletedVideoCourseEvent)="courseWasSelected($event)"></courses-list>
+  <courses-list [courses]="courseData" (deletedVideoCourseEvent)="courseWasDeleted($event)"></courses-list>
+  <button class="load_more" (click)="loadMoreCourseItems()">LOAD MORE</button>
 </section>

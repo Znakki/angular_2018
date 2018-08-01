@@ -1,88 +1,54 @@
 import {Injectable} from '@angular/core';
 import {Course} from '../interfaces/course.inteface';
 import {Id} from '../interfaces/shared.interface';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {v4 as uuid} from 'uuid';
+
+const BASE_URL = 'http://localhost:3004/courses';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  public coursesItems: Course [] = [
-    {
-      id: '1234',
-      title: 'A Practical Guide to Algorithms with JavaScript',
-      creation: '2018-05-13',
-      duration: 45,
-      description: 'Learn to solve algorithms and analyze them efficiently ' +
-      'in both an interview setting and also in your day-to-day development.',
-      topRated: true
-    },
-    {
-      id: '23456',
-      title: 'Webpack 4 Fundamentals',
-      creation: '2019-05-20',
-      duration: 247,
-      description: 'Learn the Webpack 4 plugin system, tour the Webpack source code and' +
-      ' learn to build custom plugins and custom Webpack loaders.',
-      topRated: false
-    },
-    {
-      id: '234765',
-      title: 'Complete Intro to Web Development, v2',
-      creation: '2018-09-15',
-      duration: 67,
-      description: 'More than an introduction, in this course you’ll go from building your first' +
-      ' website to having the foundation for becoming a professional web developer!',
-      topRated: true
-    },
-    {
-      id: '644736343',
-      title: 'Testing React Applications',
-      creation: '2018-07-15',
-      duration: 98,
-      description: 'Fix errors before your app reaches the end user by writing maintainable unit' +
-      ' test & integration tests for your React applications!',
-      topRated: false
-    },
-    {
-      id: '3435433',
-      title: 'SQL Fundamentals',
-      creation: '2017-04-20',
-      duration: 23,
-      description: 'Learn SQL, the most popular language for storing, querying and analyzing' +
-      ' the relational data that powers your server-side applications.',
-      topRated: false
-    }
-  ];
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  public getVideoCoursesList(): Course[] {
-    return this.coursesItems;
+  public defaultCount: number = 6;
+
+  public defaultStart: number = 0;
+
+  public getCoursesList(start = this.defaultStart, count = this.defaultCount): Observable<Course[]> {
+    // @ts-ignore
+    return this.http.get<Course[]>(`${BASE_URL}`, {params: { start, count}});
   }
 
-  public getCourseItemById(id: Id): Course {
-    return this.coursesItems
-      .filter(courseItem => courseItem.id === id)
-      .pop();
+  public async getCourseItemById(id: Id): Promise<Course> {
+    const data = await this.getCoursesList().toPromise();
+    return data.find(courseItem => courseItem.id === id);
   }
 
-  public updateCourseItemById(id: Id, values: Object = {}): Course {
+  public deleteCourse(id: string): Observable<Course> {
+    return this.http.delete<Course>(`${BASE_URL}/${id}`);
+  }
+
+  public getCoursesWithParams(textFragment: string, count: string): Observable<Course[]> {
+    return this.http.get<Course[]>(`${BASE_URL}`, {params: {textFragment, count}});
+  }
+
+  public updateCourseItem(id: Id, values: Object = {}) {
     const courseItem = this.getCourseItemById(id);
-    if (!courseItem) {
-      return null;
-    }
-    Object.assign(courseItem, values);
-    return courseItem;
+    return !!courseItem ? {
+      ...courseItem,
+      ...values
+    } : null
   }
 
-  public createCourseItemById(courseItem: Course) {
-    if (!courseItem.id) {
-      courseItem.id = new Date().getMilliseconds().toString();
-    }
-    this.coursesItems.push(courseItem);
-    return this;
+  public createCourseItem(courseObject): Observable<Course> {
+    const courseItem = Object.assign({}, courseObject, {id: uuid()});
+    return this.http.post<Course>(`${BASE_URL}`, courseItem);
   }
 
 }

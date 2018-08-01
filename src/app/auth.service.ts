@@ -1,19 +1,29 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+
+const BASE_URL = 'http://localhost:3004/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+
+  private tokenData: any;
+  constructor(private http: HttpClient) {
   }
 
-  public logIn(userName, userPassword) {
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('userPassword', userPassword);
-    console.log(userName, userPassword);
+  private getToken() {
+    return this.http.get<object>(`${BASE_URL}`);
+  }
 
-    console.log('login method works');
+  public async logIn(userName, userPassword) {
+    if (userName === 'admin'|| userName === 'mentor') {
+      this.tokenData = await this.getToken().toPromise();
+      localStorage.setItem('userName', userName);
+      localStorage.setItem('userPassword', userPassword);
+      localStorage.setItem('token', this.tokenData.token);
+    }
   }
 
   public logOut() {
@@ -22,7 +32,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    return !!localStorage.getItem('userName') && localStorage.getItem('userName') !== 'null';
+    return !!localStorage.getItem('userName') && localStorage.getItem('userName') !== 'null' && localStorage.getItem('token') === 'PASSED';
   }
 
   public getUserInfo() {

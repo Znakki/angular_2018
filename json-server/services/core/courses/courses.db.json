@@ -1,0 +1,93 @@
+{
+  "auth" : { "token" : "PASSED"},
+  "courses": [
+    {
+      "id": "1234",
+      "title": "A Practical Guide to Algorithms with JavaScript",
+      "creation": "2018-05-13",
+      "duration": 45,
+      "description": "Learn to solve algorithms and analyze them efficiently in both an interview setting and also in your day-to-day development.",
+      "topRated": true
+    },
+    {
+      "id": "23456",
+      "title": "Webpack 4 Fundamentals",
+      "creation": "2019-05-20",
+      "duration": 247,
+      "description": "Learn the Webpack 4 plugin system, tour the Webpack source code and learn to build custom plugins and custom Webpack loaders.",
+      "topRated": false
+    },
+    {
+      "id": "234765",
+      "title": "Complete Intro to Web Development, v2",
+      "creation": "2018-09-15",
+      "duration": 67,
+      "description": "More than an introduction, in this course you’ll go from building your first website to having the foundation for becoming a professional web developer!",
+      "topRated": true
+    },
+    {
+      "id": "644736343",
+      "title": "Testing React Applications",
+      "creation": "2018-07-15",
+      "duration": 98,
+      "description": "Fix errors before your app reaches the end user by writing maintainable unit test & integration tests for your React applications!",
+      "topRated": false
+    },
+    {
+      "id": "3435433",
+      "title": "SQL Fundamentals",
+      "creation": "2017-04-20",
+      "duration": 23,
+      "description": "Learn SQL, the most popular language for storing, querying and analyzing the relational data that powers your server-side applications.",
+      "topRated": false
+    },
+    {
+      "id": "6436563477563767567767",
+      "title": "Automate Daily Development Tasks with Bash",
+      "creation": "2018-08-20",
+      "duration": 456,
+      "description": "Humans were never meant to repeat joyless tasks in a precise manner, over and over and over. Computers are meant precisely for these types of tasks.",
+      "topRated": true
+    },
+    {
+      "id": "4343526565634665464",
+      "title": "JSON Web Token (JWT) Authentication with Node.js and Auth0",
+      "creation": "2018-08-10",
+      "duration": 900,
+      "description": "JSON Web Token (JWT) is a low overhead option for authentication that is easy to implement and scales with your application. There is no need to store session data as everything you need is stored in an encoded string sent in the JWT, significantly reducing database overhead for your servers.",
+      "topRated": true
+    },
+    {
+      "id": "64365434343677563767567767",
+      "title": "Reduce Redux Boilerplate with Redux-Actions",
+      "creation": "2018-08-02",
+      "duration": 231,
+      "description": "Redux is a powerful way to manage application state, but that power can come with a lot of code. A single update can sometimes require changes across many files and the code required to define action creators and to handle those actions in your reducer can start to get pretty repetitive.",
+      "topRated": false
+    },
+    {
+      "id": "6436543434367743235767567767",
+      "title": "Style and Theme Ionic Applications",
+      "creation": "2018-07-12",
+      "duration": 567,
+      "description": "Theming Ionic applications is a topic that is often left undiscussed. Ionic has a robust API to theme your application so you don't have to settle with the default styles.",
+      "topRated": true
+    },
+    {
+      "id": "34434368798778354633",
+      "title": "React Navigation for Native Mobile Applications",
+      "creation": "2017-04-20",
+      "duration": 4554,
+      "description": "React Navigation makes the easy things easy and the hard things possible. This course will help you understand how to customize and use React Navigation for more complex navigation patterns.",
+      "topRated": false
+    },
+    {
+      "id": "64365222263477563767567767",
+      "title": "SEO Friendly Progressive Web Applications with Angular Universal",
+      "creation": "2018-08-03",
+      "duration": 456,
+      "description": "In this course we will create an Angular application that will serve as a public website. Normally there are quite a few trade-offs by using a Single Page Application for a public website.",
+      "topRated": false
+    }
+  ]
+}

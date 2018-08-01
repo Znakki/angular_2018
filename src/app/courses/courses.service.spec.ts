@@ -13,7 +13,7 @@ describe('CoursesService', () => {
   });
 
   it('should get the courses list =  5 ', () => {
-    coursesService.getVideoCoursesList();
+    coursesService.getCoursesList();
     const mockedCountLength: number = 5;
     expect(coursesService.coursesItems.length).toEqual(mockedCountLength);
   });

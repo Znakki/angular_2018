@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CoursesService} from '../courses.service';
 
 @Component({
   selector: 'course-modal',
@@ -9,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class CourseModalComponent implements OnInit {
 
+  private isNewCourse;
 
   public modal: FormGroup = new FormGroup(
     {
@@ -18,15 +20,16 @@ export class CourseModalComponent implements OnInit {
       duration: new FormControl()
     });
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService) {
   }
 
   ngOnInit() {
+    this.isNewCourse = this.route.snapshot.params.id;
   }
 
   public saveData() {
-    console.log('save Data works!');
-    this.router.navigate(['/courses']);
+    const modalValue = this.modal.value;
+    this.isNewCourse ? this.coursesService.updateCourseItem('someValue') : this.coursesService.createCourseItem(modalValue).subscribe(_=> this.router.navigate(['/courses']));
   }
 
   public cancelChanges() {

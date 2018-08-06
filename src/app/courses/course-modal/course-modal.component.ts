@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'course-modal',
@@ -17,7 +18,7 @@ export class CourseModalComponent implements OnInit {
       duration: new FormControl()
     });
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -25,6 +26,12 @@ export class CourseModalComponent implements OnInit {
 
   public saveData() {
     console.log('save Data works!');
+    this.router.navigate(['/courses']);
+  }
+
+  public cancelChanges() {
+    console.log('cancel changes works!');
+    this.router.navigate(['/courses']);
   }
 
 }

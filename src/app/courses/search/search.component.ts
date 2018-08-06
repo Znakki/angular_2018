@@ -21,6 +21,6 @@ export class SearchComponent implements OnInit {
   }
 
   public openCourseModal() {
-    this.router.navigate(['/courses/modal']);
+    this.router.navigate(['/courses/new']);
   }
 }

@@ -3,6 +3,10 @@ import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
 import {CoursesService} from '../courses.service';
 import {FilterPipe} from '../filter.pipe';
+import {HttpErrorResponse} from '@angular/common/http';
+
+const DEFAULT_LOAD_COUNT = '10';
+
 
 @Component({
   selector: 'courses-list',
@@ -12,46 +16,38 @@ import {FilterPipe} from '../filter.pipe';
 })
 export class CoursesListComponent implements OnInit {
 
-  public courses: Course[];
-  @Input() coursesList: Course[];
+  @Input() courses: Course[];
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
+  public countToLoad: string = DEFAULT_LOAD_COUNT;
 
   constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe) {
 
   }
 
   ngOnInit() {
-    this.courses = this.coursesList;
   }
 
-  public deleteCourseItem(course: Course) {
+  public async deleteCourseItem(courseID: Id) {
     const isRemoveCourse = confirm('Do you wanna remove this course? PLease confirm it');
     if (isRemoveCourse) {
-      const courseItem: Course = this.coursesService.getCourseItemById(course.id);
-      this.deleteCourseById(courseItem.id);
-      this.deletedVideoCourseEvent.emit(courseItem.id);
-      console.log('course id ', courseItem.id);
+      this.coursesService.deleteCourse(courseID).subscribe(() => {
+        this.deletedVideoCourseEvent.emit(courseID);
+        console.log('course id ', courseID);
+      });
     }
   }
 
-  private deleteCourseById(id: Id): void {
-    this.courses = this.courses
-      .filter(courseItem => courseItem.id !== id);
+  public getSearchInput(courseInputValue: string): void {
+    this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
+        this.courses = res;
+        this.courses =  this._filterPipe.transform(this.courses, courseInputValue);
+      },
+      (error: HttpErrorResponse) => console.log(error)
+    );
   }
 
-  public loadMoreCourseItems(): void {
-    console.log('LOAD WORKS IS WORKED');
-    // TODO observable should be used for this action
-    this.courses = this.courses.concat(this.courses);
-  }
-
-  public getSearchInput(courseInputValue: string) {
-    this.courses = this._filterPipe.transform(this.coursesList, courseInputValue);
-  }
-
-  public editCourseItem(courseId: string): void {
-    const courseItem: Course = this.coursesService.getCourseItemById(courseId);
-    console.log(courseItem);
+  public  async editCourseItem(courseId: string) {
+    console.log(courseId);
   }
 
 }

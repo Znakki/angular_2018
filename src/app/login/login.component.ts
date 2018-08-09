@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-  public sendLoginData() {
-    this.authService.logIn(this.form.value.userName, this.form.value.userPassword);
-    this.form.reset();
+  public async sendLoginData() {
+   await this.authService.logIn(this.form.value.userName, this.form.value.userPassword);
     this.authService.getUserInfo();
+    this.form.reset();
     this.router.navigate(['/courses']);
   }
 }

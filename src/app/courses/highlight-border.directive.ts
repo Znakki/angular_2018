@@ -27,7 +27,6 @@ export class HighlightBorderDirective implements OnInit {
     const currentDate = new Date();
     const createdDateBlock = new Date(this.createdDate);
     const twoWeeksAgo = new Date(new Date(currentDate).setDate(currentDate.getDate() - 14));
-    console.log(currentDate > createdDateBlock);
     if (createdDateBlock < currentDate && createdDateBlock >= twoWeeksAgo) {
       this.color = 'green';
     } else if (createdDateBlock > currentDate) {

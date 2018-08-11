@@ -2,10 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
 import {CoursesService} from '../courses.service';
-import {FilterPipe} from '../filter.pipe';
-import {HttpErrorResponse} from '@angular/common/http';
 
-const DEFAULT_LOAD_COUNT = '10';
 
 
 @Component({
@@ -18,9 +15,8 @@ export class CoursesListComponent implements OnInit {
 
   @Input() courses: Course[];
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
-  public countToLoad: string = DEFAULT_LOAD_COUNT;
 
-  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe) {
+  constructor(private coursesService: CoursesService) {
 
   }
 
@@ -35,17 +31,6 @@ export class CoursesListComponent implements OnInit {
         console.log('course id ', courseID);
       });
     }
-  }
-
-  public getSearchInput(courseInputValue: string): void {
-    console.log(courseInputValue);
-    this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
-        this.courses = res;
-        console.log(res);
-        this.courses =  this._filterPipe.transform(this.courses, courseInputValue);
-      },
-      (error: HttpErrorResponse) => console.log(error)
-    );
   }
 
   public  async editCourseItem(courseId: string) {

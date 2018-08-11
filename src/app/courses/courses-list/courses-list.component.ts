@@ -38,8 +38,10 @@ export class CoursesListComponent implements OnInit {
   }
 
   public getSearchInput(courseInputValue: string): void {
+    console.log(courseInputValue);
     this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
         this.courses = res;
+        console.log(res);
         this.courses =  this._filterPipe.transform(this.courses, courseInputValue);
       },
       (error: HttpErrorResponse) => console.log(error)

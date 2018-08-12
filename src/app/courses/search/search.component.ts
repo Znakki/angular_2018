@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   public searchTerm$ = new Subject<string>();
 
   constructor(private router: Router) {
-   this.search(this.searchTerm$);
+    this.search(this.searchTerm$);
   }
 
   ngOnInit() {
@@ -25,7 +25,13 @@ export class SearchComponent implements OnInit {
   }
 
   public search(terms: Observable<string>) {
-    return terms.pipe(debounceTime(300), distinctUntilChanged()).subscribe(filter => this.videoCourseNameEmitEvent.emit(filter));
+    return terms.pipe(debounceTime(300), distinctUntilChanged()).subscribe(filter => {
+      if (filter.length >= 3) {
+        this.videoCourseNameEmitEvent.emit(filter);
+      } else if (filter.length === 0) {
+        this.videoCourseNameEmitEvent.emit(filter);
+      }
+    });
   }
 
 }

@@ -44,7 +44,6 @@ export class CoursesComponent implements OnInit {
   }
 
   public getSearchInput(courseInputValue: string): void {
-    console.log(courseInputValue);
     this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
         this.courseData = res;
         this.courseData =  this._filterPipe.transform(this.courseData, courseInputValue);

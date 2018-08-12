@@ -36,17 +36,18 @@ const appRoutes: Routes = [
   {
     path: 'courses', component: CoursesComponent,
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
     resolve: {
       courses: CoursesResolver
     },
   },
   {
     path: 'courses/new',
+    canActivate: [AuthGuard],
     component: CourseModalComponent
   },
   {
     path: 'courses/:id',
+    canActivate: [AuthGuard],
     component: CourseModalComponent
   },
   {

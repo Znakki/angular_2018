@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {AppService} from "../app.service";
 
 @Component({
   selector: 'login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
       userPassword: new FormControl()
     });
 
-  constructor(private authService: AuthService, private  router: Router) {
+  constructor(private authService: AuthService, private  router: Router,private appService: AppService) {
   }
 
   ngOnInit() {
@@ -24,9 +25,11 @@ export class LoginComponent implements OnInit {
 
 
   public async sendLoginData() {
+    this.appService.isSpinnerChecked(true);
    await this.authService.logIn(this.form.value.userName, this.form.value.userPassword);
     this.authService.getUserInfo();
     this.form.reset();
     this.router.navigate(['/courses']);
+    this.appService.isSpinnerChecked(false);
   }
 }

@@ -12,8 +12,8 @@ export class AppComponent {
   constructor(private appService: AppService) {
   }
 
-  get isAuth(): Observable<boolean> {
-    return this.appService.isAuth$;
+  get isLoginActivate(): Observable<boolean> {
+    return this.appService.isLoginActivate$;
   }
 
   get isSpinner(): Observable<boolean> {

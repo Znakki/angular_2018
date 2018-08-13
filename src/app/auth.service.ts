@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 const BASE_URL = 'http://localhost:3004/auth';
 
@@ -11,22 +12,18 @@ export class AuthService {
 
   private isAuthenticatedChecked: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isTokenExist());
 
-  private tokenData: any;
+  private tokenData: string;
+
   constructor(private http: HttpClient) {
   }
 
-  private getToken() {
-    return this.http.get<object>(`${BASE_URL}`);
-  }
-
-  public async logIn(userName, userPassword) {
-    if (userName === 'admin' || userName === 'mentor') {
-      this.tokenData = await this.getToken().toPromise();
-      localStorage.setItem('userName', userName);
-      localStorage.setItem('userPassword', userPassword);
-      localStorage.setItem('token', this.tokenData.token);
+  public logIn(data) {
+    return this.http.post<any>(`${BASE_URL}/login`, data).pipe(tap((res: any) => {
+      console.log(res.token);
+      localStorage.setItem('token', res.token);
+      this.tokenData = res.token;
       this.isAuthenticatedChecked.next(true);
-    }
+    }));
   }
 
   public logOut() {
@@ -36,15 +33,17 @@ export class AuthService {
   }
 
   private isTokenExist(): boolean {
-    return !!localStorage.getItem('userName') && localStorage.getItem('userName') !== 'null' && localStorage.getItem('token') === 'PASSED';
+    console.log(localStorage.getItem('token') === this.tokenData);
+    return localStorage.getItem('token') === this.tokenData;
   }
+
   public isAuthenticated(): Observable<boolean> {
     return this.isAuthenticatedChecked.asObservable();
   }
 
 
   public getUserInfo() {
-    console.log('getUserInfo method works');
-
+    const token = this.tokenData;
+    return this.http.post<any>(`${BASE_URL}/userinfo`, {token});
   }
 }

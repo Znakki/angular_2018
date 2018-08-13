@@ -40,16 +40,22 @@ export class CoursesComponent implements OnInit {
   }
 
   public  async loadMoreCourseItems() {
+    this.appService.isSpinnerChecked(true);
     const loadMoreData = await this.coursesService.getCoursesList(start, count).toPromise();
     start =  count;
     count = oldStart + count;
     this.courseData = this.courseData.concat(loadMoreData);
+    this.appService.isSpinnerChecked(false);
+
   }
 
   public getSearchInput(courseInputValue: string): void {
+    this.appService.isSpinnerChecked(true);
     this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
         this.courseData = res;
         this.courseData =  this._filterPipe.transform(this.courseData, courseInputValue);
+        this.appService.isSpinnerChecked(false);
+
       },
       (error: HttpErrorResponse) => console.log(error)
     );

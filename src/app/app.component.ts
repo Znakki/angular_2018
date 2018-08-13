@@ -15,4 +15,8 @@ export class AppComponent {
   get isAuth(): Observable<boolean> {
     return this.appService.isAuth$;
   }
+
+  get isSpinner(): Observable<boolean> {
+    return this.appService.isSpinner$;
+  }
 }

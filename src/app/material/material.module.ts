@@ -10,7 +10,7 @@ import {
   MatDatepickerModule,
   MatIconModule,
   MatNativeDateModule,
-  MatChipsModule
+  MatChipsModule, MatProgressSpinnerModule
 } from '@angular/material';
 
 @NgModule({
@@ -19,6 +19,7 @@ import {
   ],
   exports: [
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatDialogModule,
     MatCardModule,
     MatInputModule,

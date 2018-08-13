@@ -4,6 +4,7 @@ import {Course} from '../interfaces/course.inteface';
 import {Id} from '../interfaces/shared.interface';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FilterPipe} from './filter.pipe';
+import {AppService} from '../app.service';
 
 const DEFAULT_LOAD_COUNT = '10';
 
@@ -21,14 +22,16 @@ export class CoursesComponent implements OnInit {
   public courseData: Course[];
   public countToLoad: string = DEFAULT_LOAD_COUNT;
 
-  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe) { }
+  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe, private appService: AppService) { }
 
   ngOnInit() {
     this.init();
   }
 
   private async init() {
-   this.courseData = await this.coursesService.getCoursesList().toPromise();
+    this.appService.isSpinnerChecked(true);
+    this.courseData = await this.coursesService.getCoursesList().toPromise();
+    this.appService.isSpinnerChecked(false);
   }
 
   public courseWasDeleted(id: Id): void {

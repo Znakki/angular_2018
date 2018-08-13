@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import {AppService} from './app.service';
 
@@ -7,9 +7,9 @@ import {AppService} from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, AfterViewChecked {
 
-  constructor(private appService: AppService ,private cdRef:ChangeDetectorRef) {
+  constructor(private appService: AppService, private cdRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {

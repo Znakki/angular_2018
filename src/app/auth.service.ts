@@ -46,4 +46,10 @@ export class AuthService {
     const token = this.tokenData;
     return this.http.post<any>(`${BASE_URL}/userinfo`, {token});
   }
+
+  public getAuthToken() {
+    if (this.isTokenExist()) {
+      return this.tokenData;
+    }
+  }
 }

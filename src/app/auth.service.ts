@@ -41,6 +41,10 @@ export class AuthService {
     return this.isAuthenticatedChecked.asObservable();
   }
 
+  get isAuthenticated$(): Observable<boolean> {
+    return this.isAuthenticatedChecked.asObservable();
+  }
+
 
   public getUserInfo() {
     const token = this.tokenData;

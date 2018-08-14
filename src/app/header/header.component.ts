@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
     if(status){
       this.status = status;
         this.authService.getUserInfo().subscribe(data => {
-        this.userData =  data.name});
+        this.userData =  data.name
+        });
     } else {
       this.status = status;
     }

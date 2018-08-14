@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
       this.form.reset();
       this.router.navigate(['/courses']);
       this.appService.isSpinnerChecked(false);
-    });
+    }, error => {
+      alert('THE USER IS NOT FOUND'+ JSON.stringify(error));
+      this.appService.isSpinnerChecked(false);});
   }
 }

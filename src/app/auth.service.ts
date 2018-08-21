@@ -33,8 +33,7 @@ export class AuthService {
   }
 
   private isTokenExist(): boolean {
-    console.log(localStorage.getItem('token') === this.tokenData);
-    return localStorage.getItem('token') === this.tokenData;
+    return !!localStorage.getItem('token');
   }
 
   public isAuthenticated(): Observable<boolean> {
@@ -42,13 +41,13 @@ export class AuthService {
   }
 
   public getUserInfo() {
-    const token = this.tokenData;
+    const token = localStorage.getItem('token');
     return this.http.post<any>(`${BASE_URL}/userinfo`, {token});
   }
 
   public getAuthToken() {
     if (this.isTokenExist()) {
-      return this.tokenData;
+      return localStorage.getItem('token');
     }
   }
 }

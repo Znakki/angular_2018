@@ -24,7 +24,7 @@ export class AppService {
     return this.isSpinner.asObservable();
   }
 
-  public isSpinnerChecked(value: boolean) {
+  public switchSpinner(value: boolean) {
     this.isSpinner.next(value);
   }
 }

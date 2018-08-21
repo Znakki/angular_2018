@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import {AuthState, LoginAction, LogoutAction} from "../@store/auth";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-header',
@@ -16,12 +18,13 @@ export class HeaderComponent implements OnInit {
 
   public status: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,private store: Store<AuthState>) { }
 
 
   ngOnInit() {
   this.authService.isAuthenticated().subscribe(status => {
     if(status){
+      this.store.dispatch(new LoginAction());
       this.status = status;
         this.authService.getUserInfo().subscribe(data => {
         this.userData =  data.name
@@ -35,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   public logOut() {
     this.authService.logOut();
+    this.store.dispatch(new LogoutAction());
     this.router.navigate(['/login']);
   }
 

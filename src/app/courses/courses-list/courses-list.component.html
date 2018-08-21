@@ -2,13 +2,13 @@
   <div class="course-list__notification" *ngIf="courses && !courses.length">
     NO DATA. FEEL FREE TO ADD A NEW COURSE
   </div>
-  <div class="course-list__item-wrapper" *ngFor="let course of (courses$ | async).courses | orderByDate">
+  <div class="course-list__item-wrapper" *ngFor="let course of (courses$ | async) | orderByDate">
     <course [appHighlightBorder]="course.creation" class="course-list__item" [course]="course"></course>
     <div class="course-list__buttons">
       <button mat-raised-button (click)="editCourseItem(course.id)" [routerLink]="['/courses', course.id]"
               [queryParams]="{title: course.title}">EDIT
       </button>
-      <button mat-raised-button (click)="deleteCourseItem(course.id)">DELETE</button>
+      <button mat-raised-button (click)="deleteCourseItem(course)">DELETE</button>
     </div>
   </div>
 </section>

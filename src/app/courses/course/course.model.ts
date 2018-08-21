@@ -4,10 +4,10 @@ import {Course} from '../../interfaces/course.inteface';
 export class CourseModel implements Course {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   duration: number;
   creation: string;
-  topRated: boolean;
+  topRated?: boolean;
 
 
   constructor(videoCourse: Course) {

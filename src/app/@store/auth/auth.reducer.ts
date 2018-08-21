@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import {AuthActionTypes} from "./auth.action";
+import {AuthActionTypes} from './auth.action';
+import {AuthState, initialAuthState} from "./auth.state";
 
 
 

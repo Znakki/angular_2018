@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CoursesService} from '../courses.service';
+import * as CoursesActions from '../../@store/courses/courses.action';
+import {Store} from "@ngrx/store";
+import {AppState} from "../../@store";
 
 @Component({
   selector: 'course-modal',
@@ -20,7 +23,7 @@ export class CourseModalComponent implements OnInit {
       duration: new FormControl()
     });
 
-  constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService) {
+  constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService, private store: Store<AppState>) {
   }
 
   ngOnInit() {
@@ -29,7 +32,7 @@ export class CourseModalComponent implements OnInit {
 
   public saveData() {
     const modalValue = this.modal.value;
-    this.isNewCourse ? this.coursesService.updateCourseItem('someValue') : this.coursesService.createCourseItem(modalValue).subscribe(_=> this.router.navigate(['/courses']));
+    this.isNewCourse ? this.coursesService.updateCourseItem('someValue') : this.store.dispatch(new CoursesActions.CreateCourse(modalValue));
   }
 
   public cancelChanges() {

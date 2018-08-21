@@ -24,10 +24,11 @@ import {AuthInterceptor} from './auth.interceptor';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 
-import {coursesReducer} from './redux/courses.reducer';
+import {coursesReducer} from './@store/courses';
 import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
-import {CoursesEffects} from './redux/courses.effects';
+import {CoursesEffects} from './@store/courses';
+import {authReducer} from "./@store/auth";
 
 const appRoutes: Routes = [
   {
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({coursesPage: coursesReducer}),
+    StoreModule.forRoot({courses: coursesReducer,auth: authReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([CoursesEffects]),
     HttpClientModule,

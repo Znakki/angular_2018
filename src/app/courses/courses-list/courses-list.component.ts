@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
 import {CoursesService} from '../courses.service';
+import {Observable} from "rxjs";
+import {AppState} from "../../redux/app.state";
 
 
 
@@ -14,6 +16,7 @@ import {CoursesService} from '../courses.service';
 export class CoursesListComponent implements OnInit {
 
   @Input() courses: Course[];
+  @Input() courses$ :Observable<AppState>;
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
 
   constructor(private coursesService: CoursesService) {

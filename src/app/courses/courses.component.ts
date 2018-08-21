@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CoursesService} from './courses.service';
 import {Course} from '../interfaces/course.inteface';
 import {Id} from '../interfaces/shared.interface';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FilterPipe} from './filter.pipe';
 import {AppService} from '../app.service';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {AppState} from '../redux/app.state';
+import * as CoursesActions from '../redux/courses.action';
 
 const DEFAULT_LOAD_COUNT = '10';
 
 let start = 6;
-let oldStart =  start;
+let oldStart = start;
 let count = 12;
 
 @Component({
@@ -22,9 +23,14 @@ let count = 12;
 export class CoursesComponent implements OnInit {
 
   public courseData: Course[];
+  public courseData$;
   public countToLoad: string = DEFAULT_LOAD_COUNT;
 
-  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe, private appService: AppService, private store: Store<AppState>) { }
+  constructor(private coursesService: CoursesService,
+              private _filterPipe: FilterPipe,
+              private appService: AppService,
+              private store: Store<AppState>) {
+  }
 
   ngOnInit() {
     this.init();
@@ -32,7 +38,8 @@ export class CoursesComponent implements OnInit {
 
   private async init() {
     this.appService.isSpinnerChecked(true);
-    this.courseData = await this.coursesService.getCoursesList().toPromise();
+    this.store.dispatch(new CoursesActions.LoadCourses());
+    this.courseData$ = this.store.pipe(select('coursesPage'));
     this.appService.isSpinnerChecked(false);
   }
 
@@ -41,12 +48,14 @@ export class CoursesComponent implements OnInit {
     this.init();
   }
 
-  public  async loadMoreCourseItems() {
+  public async loadMoreCourseItems() {
     this.appService.isSpinnerChecked(true);
-    const loadMoreData = await this.coursesService.getCoursesList(start, count).toPromise();
-    start =  count;
+    const loadMoreData = await this.coursesService.getCoursesList(start, count);
+    start = count;
     count = oldStart + count;
-    this.courseData = this.courseData.concat(loadMoreData);
+    this.store.select('coursesPage').subscribe(({courses}) => {
+      this.courseData = this.courseData.concat(courses);
+    });
     this.appService.isSpinnerChecked(false);
 
   }
@@ -55,7 +64,7 @@ export class CoursesComponent implements OnInit {
     this.appService.isSpinnerChecked(true);
     this.coursesService.getCoursesWithParams(courseInputValue, this.countToLoad).subscribe((res: Course[]) => {
         this.courseData = res;
-        this.courseData =  this._filterPipe.transform(this.courseData, courseInputValue);
+        this.courseData = this._filterPipe.transform(this.courseData, courseInputValue);
         this.appService.isSpinnerChecked(false);
 
       },

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-//components
+// components
 import {CoursesListComponent} from './courses-list/courses-list.component';
 import {SearchComponent} from './search/search.component';
 import {CourseComponent} from './course/course.component';

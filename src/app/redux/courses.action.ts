@@ -1,10 +1,21 @@
 import {Action} from '@ngrx/store';
+import {Course} from '../interfaces/course.inteface';
 
-export namespace COURSE_ACTION {
-  export const LOAD_COURSES = 'LOAD_COURSES';
+export enum CoursesActionTypes {
+  LOAD_COURSES = '[Courses] Load Courses',
+  LOAD_COURSES_SUCCESS = '[Courses] Load Courses Success'
 }
 
 
 export class LoadCourses implements Action {
-  readonly type = COURSE_ACTION.LOAD_COURSES;
+  readonly type = CoursesActionTypes.LOAD_COURSES;
 }
+
+export class LoadCoursesSuccess implements Action {
+  readonly type = CoursesActionTypes.LOAD_COURSES_SUCCESS;
+
+  constructor(public payload: Course[]) {
+  }
+}
+
+export type CoursesActions = LoadCourses | LoadCoursesSuccess;

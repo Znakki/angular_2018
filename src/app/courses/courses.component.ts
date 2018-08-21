@@ -5,6 +5,8 @@ import {Id} from '../interfaces/shared.interface';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FilterPipe} from './filter.pipe';
 import {AppService} from '../app.service';
+import {Store} from '@ngrx/store';
+import {AppState} from '../redux/app.state';
 
 const DEFAULT_LOAD_COUNT = '10';
 
@@ -22,7 +24,7 @@ export class CoursesComponent implements OnInit {
   public courseData: Course[];
   public countToLoad: string = DEFAULT_LOAD_COUNT;
 
-  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe, private appService: AppService) { }
+  constructor(private coursesService: CoursesService, private _filterPipe: FilterPipe, private appService: AppService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.init();

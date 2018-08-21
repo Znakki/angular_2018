@@ -1,12 +1,10 @@
-import {Action} from 'rxjs/internal/scheduler/Action';
+import {Action} from '@ngrx/store';
 
-export  namespace COURSE_ACTION {
-  export const ADD_COURSE = 'ADD_COURSE';
+export namespace COURSE_ACTION {
+  export const LOAD_COURSES = 'LOAD_COURSES';
 }
 
 
-export class AddCourse implements Action{
-  readonly type = COURSE_ACTION.ADD_COURSE;
-
-  constructor(public payload: any){}
+export class LoadCourses implements Action {
+  readonly type = COURSE_ACTION.LOAD_COURSES;
 }

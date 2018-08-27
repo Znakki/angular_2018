@@ -7,15 +7,24 @@ import {Observable} from 'rxjs/internal/Observable';
 })
 export class AppService {
 
-  private isAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isLoginActivate: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isSpinner: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
-  public get isAuth$(): Observable<boolean> {
-    return this.isAuth.asObservable();
+  public get isLoginActivate$(): Observable<boolean> {
+    return this.isLoginActivate.asObservable();
   }
 
   public isAuthChecked(value: boolean) {
-    this.isAuth.next(value);
+    this.isLoginActivate.next(value);
+  }
+
+  public get isSpinner$(): Observable<boolean> {
+    return this.isSpinner.asObservable();
+  }
+
+  public isSpinnerChecked(value: boolean) {
+    this.isSpinner.next(value);
   }
 }

@@ -1,5 +1,4 @@
 {
-  "auth" : { "token" : "PASSED"},
   "courses": [
     {
       "id": "1234",

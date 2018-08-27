@@ -1,7 +1,7 @@
-<mat-toolbar  color="primary" class="header">
+<mat-toolbar color="primary" class="header">
   <logo></logo>
-  <div>Hello {{hardcodedUser.firstName}} {{hardcodedUser.lastName}}</div>
-  <div class="header__buttons">
+  <div *ngIf="status">Hello {{userData.first}} {{userData.last}}</div>
+  <div class=" header__buttons">
     <button mat-stroked-button routerLink="login">User LogIN</button>
     <button mat-stroked-button (click)="logOut()">User LogOUT</button>
   </div>

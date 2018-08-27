@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 const BASE_URL = 'http://localhost:3004/auth';
 
@@ -8,35 +10,44 @@ const BASE_URL = 'http://localhost:3004/auth';
 })
 export class AuthService {
 
+  private isAuthenticatedChecked: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isTokenExist());
 
-  private tokenData: any;
+  private tokenData: string;
+
   constructor(private http: HttpClient) {
   }
 
-  private getToken() {
-    return this.http.get<object>(`${BASE_URL}`);
-  }
-
-  public async logIn(userName, userPassword) {
-    if (userName === 'admin'|| userName === 'mentor') {
-      this.tokenData = await this.getToken().toPromise();
-      localStorage.setItem('userName', userName);
-      localStorage.setItem('userPassword', userPassword);
-      localStorage.setItem('token', this.tokenData.token);
-    }
+  public logIn(data) {
+    return this.http.post<any>(`${BASE_URL}/login`, data).pipe(tap((res: any) => {
+      console.log(res.token);
+      localStorage.setItem('token', res.token);
+      this.tokenData = res.token;
+      this.isAuthenticatedChecked.next(true);
+    }));
   }
 
   public logOut() {
+    this.isAuthenticatedChecked.next(false);
     localStorage.clear();
     console.log('logOut method works');
   }
 
-  public isAuthenticated(): boolean {
-    return !!localStorage.getItem('userName') && localStorage.getItem('userName') !== 'null' && localStorage.getItem('token') === 'PASSED';
+  private isTokenExist(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  public isAuthenticated(): Observable<boolean> {
+    return this.isAuthenticatedChecked.asObservable();
   }
 
   public getUserInfo() {
-    console.log('getUserInfo method works');
+    const token = localStorage.getItem('token');
+    return this.http.post<any>(`${BASE_URL}/userinfo`, {token});
+  }
 
+  public getAuthToken() {
+    if (this.isTokenExist()) {
+      return localStorage.getItem('token');
+    }
   }
 }

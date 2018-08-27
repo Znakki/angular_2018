@@ -1,4 +1,7 @@
 <app-header></app-header>
-<breadcrumps *ngIf="isAuth | async"></breadcrumps>
+<section class="loading" *ngIf="isSpinner | async">
+  <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+</section>
+<breadcrumps *ngIf="isLoginActivate | async"></breadcrumps>
 <router-outlet></router-outlet>
-<app-footer *ngIf="isAuth | async"></app-footer>
+<app-footer *ngIf="isLoginActivate | async"></app-footer>

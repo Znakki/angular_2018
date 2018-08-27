@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import {AppService} from './app.service';
 
@@ -7,12 +7,24 @@ import {AppService} from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewChecked {
 
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private cdRef: ChangeDetectorRef) {
   }
 
-  get isAuth(): Observable<boolean> {
-    return this.appService.isAuth$;
+  ngOnInit() {
+    this.ngAfterViewChecked();
+  }
+
+  get isLoginActivate(): Observable<boolean> {
+    return this.appService.isLoginActivate$;
+  }
+
+  get isSpinner(): Observable<boolean> {
+    return this.appService.isSpinner$;
+  }
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
   }
 }

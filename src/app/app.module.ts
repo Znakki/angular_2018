@@ -18,8 +18,8 @@ import {CourseModalComponent} from './courses/course-modal/course-modal.componen
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {CoursesResolver} from './courses/courses.resolver';
 import {AuthGuard} from './auth.guard';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor} from "./auth.interceptor";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './auth.interceptor';
 
 const appRoutes: Routes = [
   {
@@ -36,17 +36,18 @@ const appRoutes: Routes = [
   {
     path: 'courses', component: CoursesComponent,
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
     resolve: {
       courses: CoursesResolver
     },
   },
   {
     path: 'courses/new',
+    canActivate: [AuthGuard],
     component: CourseModalComponent
   },
   {
     path: 'courses/:id',
+    canActivate: [AuthGuard],
     component: CourseModalComponent
   },
   {

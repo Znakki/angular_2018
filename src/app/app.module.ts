@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {StoreModule} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -20,6 +21,14 @@ import {CoursesResolver} from './courses/courses.resolver';
 import {AuthGuard} from './auth.guard';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth.interceptor';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+
+
+import {coursesReducer} from './@store/courses';
+import {environment} from '../environments/environment';
+import {EffectsModule} from '@ngrx/effects';
+import {CoursesEffects} from './@store/courses';
+import {authReducer} from "./@store/auth";
 
 const appRoutes: Routes = [
   {
@@ -68,6 +77,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({courses: coursesReducer,auth: authReducer}),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([CoursesEffects]),
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

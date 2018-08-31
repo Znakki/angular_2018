@@ -25,13 +25,13 @@ export class LoginComponent implements OnInit {
 
 
   public sendLoginData() {
-    this.appService.isSpinnerChecked(true);
+    this.appService.switchSpinner(true);
     this.authService.logIn(this.form.value).subscribe(_ => {
       this.form.reset();
       this.router.navigate(['/courses']);
-      this.appService.isSpinnerChecked(false);
+      this.appService.switchSpinner(false);
     }, error => {
       alert('THE USER IS NOT FOUND'+ JSON.stringify(error));
-      this.appService.isSpinnerChecked(false);});
+      this.appService.switchSpinner(false);});
   }
 }

@@ -1,7 +1,12 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Id} from '../../interfaces/shared.interface';
 import {Course} from '../../interfaces/course.inteface';
-import {CoursesService} from '../courses.service';
+import {Observable} from 'rxjs';
+import {CoursesState} from '../../@store/courses';
+import * as CoursesActions from '../../@store/courses/courses.action';
+import {Store} from "@ngrx/store";
+import {CourseModel} from "../course/course.model";
+import {AppState} from "../../@store";
 
 
 
@@ -14,22 +19,21 @@ import {CoursesService} from '../courses.service';
 export class CoursesListComponent implements OnInit {
 
   @Input() courses: Course[];
+  @Input() courses$: Observable<CoursesState>;
   @Output() deletedVideoCourseEvent = new EventEmitter<Id>();
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private store: Store<AppState>) {
 
   }
 
   ngOnInit() {
   }
 
-  public async deleteCourseItem(courseID: Id) {
+  public deleteCourseItem(course: CourseModel) {
     const isRemoveCourse = confirm('Do you wanna remove this course? PLease confirm it');
     if (isRemoveCourse) {
-      this.coursesService.deleteCourse(courseID).subscribe(() => {
-        this.deletedVideoCourseEvent.emit(courseID);
-        console.log('course id ', courseID);
-      });
+      this.store.dispatch(new CoursesActions.DeleteCourseItem(course));
+      this.deletedVideoCourseEvent.emit(course.id);
     }
   }
 

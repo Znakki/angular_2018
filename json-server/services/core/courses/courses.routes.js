@@ -4,7 +4,8 @@ const jsonServer = require('json-server');
 const router = express.Router();
 
 router.use(jsonServer.rewriter({
-	'/auth/userInfo': '/auth/userInfo'
+  '/courses': '/courses',
+  '/courses/:id': '/courses/:id',
 }));
 
 module.exports = router;

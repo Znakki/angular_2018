@@ -3,12 +3,21 @@
     <form [formGroup]="modal" class="modal">
       <mat-form-field>
         <input matInput formControlName="title" placeholder="Title">
+       <div *ngIf="modal.controls['title'].hasError('maxlength')">
+        Maximum of 50 characters
+        </div>
       </mat-form-field>
       <mat-form-field>
         <textarea matInput formControlName="description" placeholder="Description"></textarea>
+        <div *ngIf="modal.controls['description'].hasError('maxlength')">
+          Maximum of 500 characters
+        </div>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="duration" placeholder="Duration">
+        <div *ngIf="modal.controls['duration'].hasError('pattern')">
+          ONLY NUMBERS
+        </div>
       </mat-form-field>
       <div *ngIf="modal.value.duration">
         <span>{{modal.value.duration| duration}}</span>

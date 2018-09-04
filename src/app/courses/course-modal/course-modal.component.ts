@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CoursesService} from '../courses.service';
 import * as CoursesActions from '../../@store/courses/courses.action';
-import {Store} from "@ngrx/store";
-import {AppState} from "../../@store";
+import {Store} from '@ngrx/store';
+import {AppState} from '../../@store';
+import {CourseModel} from '../course/course.model';
 
 @Component({
   selector: 'course-modal',
@@ -17,17 +18,29 @@ export class CourseModalComponent implements OnInit {
 
   public modal: FormGroup = new FormGroup(
     {
-      title: new FormControl(),
-      description: new FormControl(),
-      creation: new FormControl(),
-      duration: new FormControl()
+      title: new FormControl('', Validators.maxLength(50)),
+      description: new FormControl('', Validators.maxLength(500)),
+      creation: new FormControl('', Validators.required),
+      duration: new FormControl('', Validators.pattern('^[0-9]*$'))
     });
 
-  constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService, private store: Store<AppState>) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private coursesService: CoursesService,
+              private store: Store<AppState>) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isNewCourse = this.route.snapshot.params.id;
+    if (this.isNewCourse) {
+      const courseItem: CourseModel = await this.coursesService.getCourseItemById(this.isNewCourse);
+      this.modal.setValue({
+        title: courseItem.title,
+        description: courseItem.description,
+        creation: courseItem.creation,
+        duration: courseItem.duration
+      });
+    }
   }
 
   public saveData() {

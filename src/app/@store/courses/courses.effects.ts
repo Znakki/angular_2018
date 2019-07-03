@@ -5,9 +5,9 @@ import {Observable} from 'rxjs';
 import {Action} from '@ngrx/store';
 import * as CoursesActions from './courses.action';
 import {switchMap, map, concatMap, pluck} from 'rxjs/operators';
-import {CourseModel} from "../../courses/course/course.model";
+import {CourseModel} from '../../courses/course/course.model';
 import {Router} from '@angular/router'
-import {FilterPipe} from "../../courses/filter.pipe";
+import {FilterPipe} from '../../courses/filter.pipe';
 
 @Injectable()
 export class CoursesEffects {

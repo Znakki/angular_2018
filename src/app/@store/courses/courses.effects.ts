@@ -14,7 +14,7 @@ export class CoursesEffects {
   public startState;
 
   constructor(private actions$: Actions,
-              private coursesService: CoursesService, private router : Router, private _filterPipe: FilterPipe) {
+              private coursesService: CoursesService, private router: Router, private _filterPipe: FilterPipe) {
     this.startState = this.coursesService.defaultStart + 4;
     console.log('[TASK EFFECTS]');
   }
@@ -40,29 +40,29 @@ export class CoursesEffects {
     concatMap((payLoad: CourseModel) => {
       return this.coursesService.deleteCourse(payLoad.id).pipe(map((_) => {
         return new CoursesActions.DeleteCourseItemSuccess(payLoad);
-      }))
+      }));
     }));
 
 
   @Effect() createCourse$: Observable<Action> =  this.actions$.pipe(
     ofType<CoursesActions.CreateCourse>(CoursesActions.CoursesActionTypes.CREATE_COURSE),
     pluck('payload'),
-    concatMap((payload: CourseModel) => {
-       return this.coursesService.createCourseItem(payload).pipe(map(_=>{
+    concatMap((payload: CourseModel[]) => {
+       return this.coursesService.createCourseItem(payload).pipe(map(_ => {
          this.router.navigate(['/courses']);
          return new CoursesActions.CreateCourseSuccess(payload);
-       }))
-    }))
+       }));
+    }));
 
   @Effect() getCoursesByParams$: Observable<Action> =  this.actions$.pipe(
     ofType<CoursesActions.LoadCoursesByParams>(CoursesActions.CoursesActionTypes.LOAD_COURSES_BY_PARAMS),
     pluck('payload'),
     concatMap((payload: string) => {
-      return this.coursesService.getCoursesWithParams(payload, 10).pipe(map(courses=>{
+      return this.coursesService.getCoursesWithParams(payload, '10').pipe(map(courses => {
          courses = this._filterPipe.transform(courses, payload);
          return new CoursesActions.LoadCoursesByParamsSuccess(courses);
-      }))
-    }))
+      }));
+    }));
 
 }
 

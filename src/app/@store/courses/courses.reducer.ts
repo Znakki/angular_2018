@@ -1,6 +1,6 @@
 import {CoursesActionTypes, CoursesActions} from './courses.action';
 import {CoursesState, initialTasksState} from './courses.state';
-import {CourseModel} from "../../courses/course/course.model";
+import {CourseModel} from '../../courses/course/course.model';
 
 export function coursesReducer(state = initialTasksState, action: CoursesActions): CoursesState {
   console.log(`Reducer: Action came in! ${action.type}`);
@@ -33,6 +33,7 @@ export function coursesReducer(state = initialTasksState, action: CoursesActions
       console.log('CREATE_COURSE_SUCCESS being handled!');
       // @ts-ignore
       const task = {...<CourseModel>action.payload};
+      // @ts-ignore
       const data = [...state.data, task];
       return {
         ...state,

@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {CourseModel} from '../../courses/course/course.model';
+import {Course} from '../../interfaces/course.inteface';
 
 export enum CoursesActionTypes {
   LOAD_COURSES = '[Courses] Load Courses',
@@ -28,7 +29,8 @@ export class LoadCoursesByParams implements Action {
 
 export class LoadCoursesByParamsSuccess implements Action {
   readonly type = CoursesActionTypes.LOAD_COURSES_BY_PARAMS_SUCCESS;
-  constructor(public payload:string) {
+
+  constructor(public payload: Course[]) {
   }
 }
 

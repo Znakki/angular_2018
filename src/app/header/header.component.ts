@@ -21,16 +21,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   this.authService.isAuthenticated().subscribe(status => {
-    if(status){
+    if ( status ) {
       this.status = status;
         this.authService.getUserInfo().subscribe(data => {
-        this.userData =  data.name
+        this.userData =  data.name;
         });
-    } else {
-      this.status = status;
     }
-
-  })
+  });
   }
 
   public logOut() {
